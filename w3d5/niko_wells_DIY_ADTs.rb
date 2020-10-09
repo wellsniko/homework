@@ -1,6 +1,6 @@
 class Stack
-    def initialize(stack)
-        @stack = stack
+    def initialize
+        @stack = []
     end
 
     def push(el)
@@ -8,35 +8,37 @@ class Stack
     end
     
     def pop
-        @stack.pop
+        @stack.pop if @stack.length > 1
+        @stack
     end
 
     def peek
-        @stack.last
+        @stack.last if @stack.length > 0
     end
 end
 
 class Queue
     def initialize(q)
-        @q = q
+        @queue = []
     end
 
     def enqueue(el)
-        @q.push(el)
+        @queue.push(el)
     end
 
     def dequeue
-        @q.shift
+        @queue.shift if queue.length > 0
     end
 
     def peek
-        @q.last
+        @queue.first if queue.length > 0
+        @queue
     end
 end
 
-class Map
-    def initialize(keys)
-        @keys = keys
+class Map #!should be subarrays, not hash
+    def initialize
+        @pairs = []
     end
 
     def set(key,value)
