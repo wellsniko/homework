@@ -5,7 +5,7 @@ class GraphNode
 
 
   def initialize(value)
-    self.val = val
+    self.value = value
     self.neighbors = []
   end
 
@@ -20,10 +20,32 @@ def bfs(start_node, target_value)
   until queue.empty?
     node = queue.shift
     unless been.include?(node)
-      return node.val if node.val == target_value
+      return node if node.value == target_value
       been.add(node)
       queue += node.neighbors
     end
   end
   return nil
 end
+
+
+a = GraphNode.new('a')
+b = GraphNode.new('b')
+c = GraphNode.new('c')
+d = GraphNode.new('d')
+e = GraphNode.new('e')
+f = GraphNode.new('f')
+
+# a.add_neighbor(f)
+
+ a.neighbors = [b, c, e]
+ c.neighbors = [b, d]
+ e.neighbors = [a]
+ f.neighbors = [e]
+
+#  p bfs(a, "b")
+
+
+
+# p f.neighbors
+p bfs(a, "f")
